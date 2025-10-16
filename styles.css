@@ -26,7 +26,6 @@ body {
     line-height: 1.6rem;
     min-height: 100vh;
     
-    /* Fundo animado com tons de preto e azul */
     background: linear-gradient(135deg, var(--background-dark), #1c2a3a, var(--dark-color));
     background-size: 400% 400%;
     animation: animate-gradient 15s ease infinite;
@@ -79,11 +78,7 @@ header {
 .profile-info h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    line-height: 3rem;
-    background: linear-gradient(135deg, var(--light-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    line-height: 1.2; /* Ajustado para melhor controle */
 }
 
 .title {
@@ -110,6 +105,12 @@ main {
     align-items: center;
     gap: 0.5rem;
     color: var(--light-gray-color);
+}
+
+/* Efeito hover nos links de contato */
+.contact-item a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
 }
 
 .contact-item i {
@@ -192,6 +193,7 @@ section { padding: 2rem; }
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    gap: 0.5rem; 
     margin-bottom: 0.5rem;
 }
 .item-title {
@@ -211,6 +213,7 @@ section { padding: 2rem; }
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 500;
+    white-space: nowrap; 
 }
 
 .item-description { color: var(--light-gray-color); }
@@ -239,15 +242,65 @@ footer {
     transform: translateY(-3px);
 }
 
-@media (max-width: 768px) {
+
+
+
+/* Para telas de tablet e menores (a partir de 992px de largura) */
+@media (max-width: 992px) {
     main {
+        /* Muda o layout para uma única coluna */
         grid-template-columns: 1fr;
     }
+
+    .profile-info h1 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Para telas de celular (a partir de 768px de largura) */
+@media (max-width: 768px) {
+    .container {
+        /* Reduz o espaçamento lateral */
+        padding: 1.5rem;
+    }
+
     .profile-header {
+        /* Coloca a imagem acima do texto e centraliza tudo */
         flex-direction: column;
         text-align: center;
     }
+
     .contact-info {
         align-items: center;
+    }
+
+    .item-header {
+        /* Empilha a data e o título para economizar espaço */
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Para telas muito pequenas (a partir de 480px de largura) */
+@media (max-width: 480px) {
+    .container {
+        /* Reduz ainda mais o espaçamento lateral */
+        padding: 1rem;
+    }
+
+    section, .card {
+        padding: 1rem;
+    }
+
+    .profile-info h1 {
+        font-size: 1.8rem;
+    }
+    
+    .title {
+        font-size: 1rem;
+    }
+
+    .item-title {
+        font-size: 1.1rem;
     }
 }
